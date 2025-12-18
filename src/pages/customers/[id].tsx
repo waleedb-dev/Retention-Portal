@@ -147,8 +147,8 @@ export default function CustomerDetailPage() {
             </h2>
             <div className="space-y-1 text-sm">
               <div>
-                <span className="text-muted-foreground">Policy Creation Date</span>
-                <div>{deal.policy_creation_date ?? ""}</div>
+                <span className="text-muted-foreground">Deal Creation Date</span>
+                <div>{deal.deal_creation_date ?? ""}</div>
               </div>
               <div>
                 <span className="text-muted-foreground">Effective Date</span>
