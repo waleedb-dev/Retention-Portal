@@ -108,10 +108,20 @@ export function AppHeaderNav() {
                 icon={<PhoneIcon className="h-4 w-4" />}
                 label="Dialer"
               />
+              <NavLink
+                href="/agent/session"
+                isActive={isActive("/agent/session")}
+                icon={<PhoneIcon className="h-4 w-4" />}
+                label="Session"
+              />
             <NavDropdown
               label="Agent"
               icon={<HeadsetIcon className="h-4 w-4" />}
-                isActive={isActive("/agent") && !isActive("/agent/dialer")}
+                isActive={
+                  isActive("/agent") &&
+                  !isActive("/agent/dialer") &&
+                  !isActive("/agent/session")
+                }
               items={[
                 { href: "/agent/assigned-leads", label: "Assigned Leads" },
               ]}

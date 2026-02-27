@@ -34,7 +34,8 @@ function buildVicidialUrl(): string {
  */
 export function PersistentVicidialIframe() {
   const router = useRouter();
-  const isDialerPage = router.pathname === "/agent/dialer";
+  const isDialerPage =
+    router.pathname === "/agent/dialer" || router.pathname === "/agent/session";
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const [url] = useState<string>(() => buildVicidialUrl());

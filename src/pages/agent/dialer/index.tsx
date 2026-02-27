@@ -34,7 +34,9 @@ type QueueLeadRow = {
   } | null;
 };
 
-export default function AgentDialerDashboard() {
+type AgentDialerDashboardProps = { embedded?: boolean };
+
+export default function AgentDialerDashboard({ embedded }: AgentDialerDashboardProps = {}) {
   const [queueLeads, setQueueLeads] = useState<QueueLeadRow[]>([]);
   const [profileId, setProfileId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -313,116 +315,123 @@ export default function AgentDialerDashboard() {
   };
 
   return (
-    <div className="flex h-[calc(100vh-4rem)] gap-4 p-4">
-      {/* Left Panel - Queue & Controls */}
-      <div className="w-80 flex-shrink-0 flex flex-col gap-4">
-        {/* Queue Overview */}
-        <Card className="flex-1 flex flex-col min-h-0">
-          <CardHeader className="pb-3 flex-shrink-0">
-            <div className="flex items-center justify-between">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <UsersIcon className="h-4 w-4" />
-                Lead Queue
-                <Badge variant="secondary" className="ml-1">
-                  {queueLeads.length}
-                </Badge>
-              </CardTitle>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-8 w-8"
-                onClick={handleRefresh}
-                disabled={refreshing}
-              >
-                <RefreshCwIcon className={`h-4 w-4 ${refreshing ? "animate-spin" : ""}`} />
-              </Button>
-            </div>
-          </CardHeader>
-          <CardContent className="flex-1 min-h-0 p-0">
-            <ScrollArea className="h-full px-4 pb-4">
-              {loading ? (
-                <div className="flex items-center justify-center py-8">
-                  <Loader2Icon className="h-6 w-6 animate-spin text-muted-foreground" />
-                </div>
-              ) : queueLeads.length === 0 ? (
-                <div className="text-center py-8 text-muted-foreground text-sm">
-                  No leads in queue
-                </div>
-              ) : (
-                <div className="space-y-2">
-                  {queueLeads.map((lead) => {
-                    const name = lead.deal?.ghl_name || lead.deal?.deal_name || "Unknown";
-                    const phone = lead.deal?.phone_number || "No phone";
-                    const stage = lead.deal?.ghl_stage;
-                    const stageLabel = stage ? getDealTagLabelFromGhlStage(stage) : null;
-                    const stageStyle = stageLabel ? getDealLabelStyle(stageLabel) : null;
-                    const disposition = lead.deal?.disposition;
+    <div
+      className={
+        embedded
+          ? "flex h-full gap-4 min-h-0"
+          : "flex h-[calc(100vh-4rem)] gap-4 p-4"
+      }
+    >
+      {/* Left Panel - Queue & Controls (hidden when embedded e.g. on Session page) */}
+      {!embedded ? (
+        <div className="w-80 flex-shrink-0 flex flex-col gap-4">
+          {/* Queue Overview */}
+          <Card className="flex-1 flex flex-col min-h-0">
+            <CardHeader className="pb-3 flex-shrink-0">
+              <div className="flex items-center justify-between">
+                <CardTitle className="flex items-center gap-2 text-base">
+                  <UsersIcon className="h-4 w-4" />
+                  Lead Queue
+                  <Badge variant="secondary" className="ml-1">
+                    {queueLeads.length}
+                  </Badge>
+                </CardTitle>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-8 w-8"
+                  onClick={handleRefresh}
+                  disabled={refreshing}
+                >
+                  <RefreshCwIcon className={`h-4 w-4 ${refreshing ? "animate-spin" : ""}`} />
+                </Button>
+              </div>
+            </CardHeader>
+            <CardContent className="flex-1 min-h-0 p-0">
+              <ScrollArea className="h-full px-4 pb-4">
+                {loading ? (
+                  <div className="flex items-center justify-center py-8">
+                    <Loader2Icon className="h-6 w-6 animate-spin text-muted-foreground" />
+                  </div>
+                ) : queueLeads.length === 0 ? (
+                  <div className="text-center py-8 text-muted-foreground text-sm">
+                    No leads in queue
+                  </div>
+                ) : (
+                  <div className="space-y-2">
+                    {queueLeads.map((lead) => {
+                      const name = lead.deal?.ghl_name || lead.deal?.deal_name || "Unknown";
+                      const phone = lead.deal?.phone_number || "No phone";
+                      const stage = lead.deal?.ghl_stage;
+                      const stageLabel = stage ? getDealTagLabelFromGhlStage(stage) : null;
+                      const stageStyle = stageLabel ? getDealLabelStyle(stageLabel) : null;
+                      const disposition = lead.deal?.disposition;
 
-                    return (
-                      <div
-                        key={lead.id}
-                        className="group p-3 rounded-lg border bg-card hover:bg-accent/50 transition-colors cursor-pointer"
-                        onClick={() => lead.deal_id && openLeadDetails(lead.deal_id)}
-                      >
-                        <div className="flex items-start justify-between gap-2">
-                          <div className="min-w-0 flex-1">
-                            <div className="font-medium text-sm truncate">{name}</div>
-                            <div className="text-xs text-muted-foreground truncate">{phone}</div>
-                            <div className="flex items-center gap-2 mt-1">
-                              {stageLabel && stageStyle && (
-                                <Badge
-                                  variant="outline"
-                                  className="text-[10px] px-1.5 py-0"
-                                  style={{
-                                    backgroundColor: stageStyle.bg,
-                                    borderColor: stageStyle.border,
-                                    color: stageStyle.text,
-                                  }}
-                                >
-                                  {stageLabel}
-                                </Badge>
-                              )}
-                              {disposition && (
-                                <Badge variant="secondary" className="text-[10px] px-1.5 py-0">
-                                  {disposition}
-                                </Badge>
-                              )}
+                      return (
+                        <div
+                          key={lead.id}
+                          className="group p-3 rounded-lg border bg-card hover:bg-accent/50 transition-colors cursor-pointer"
+                          onClick={() => lead.deal_id && openLeadDetails(lead.deal_id)}
+                        >
+                          <div className="flex items-start justify-between gap-2">
+                            <div className="min-w-0 flex-1">
+                              <div className="font-medium text-sm truncate">{name}</div>
+                              <div className="text-xs text-muted-foreground truncate">{phone}</div>
+                              <div className="flex items-center gap-2 mt-1">
+                                {stageLabel && stageStyle && (
+                                  <Badge
+                                    variant="outline"
+                                    className="text-[10px] px-1.5 py-0"
+                                    style={{
+                                      backgroundColor: stageStyle.bg,
+                                      borderColor: stageStyle.border,
+                                      color: stageStyle.text,
+                                    }}
+                                  >
+                                    {stageLabel}
+                                  </Badge>
+                                )}
+                                {disposition && (
+                                  <Badge variant="secondary" className="text-[10px] px-1.5 py-0">
+                                    {disposition}
+                                  </Badge>
+                                )}
+                              </div>
                             </div>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-7 w-7 opacity-0 group-hover:opacity-100 transition-opacity"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                if (lead.deal_id) openLeadDetails(lead.deal_id);
+                              }}
+                            >
+                              <ExternalLinkIcon className="h-3.5 w-3.5" />
+                            </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="h-7 px-2 text-[11px]"
+                              disabled={!lead.deal?.phone_number || callingLeadId === lead.id}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                void handleDialLead(lead);
+                              }}
+                            >
+                              {callingLeadId === lead.id ? "Calling..." : "Call"}
+                            </Button>
                           </div>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-7 w-7 opacity-0 group-hover:opacity-100 transition-opacity"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              if (lead.deal_id) openLeadDetails(lead.deal_id);
-                            }}
-                          >
-                            <ExternalLinkIcon className="h-3.5 w-3.5" />
-                          </Button>
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className="h-7 px-2 text-[11px]"
-                            disabled={!lead.deal?.phone_number || callingLeadId === lead.id}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              void handleDialLead(lead);
-                            }}
-                          >
-                            {callingLeadId === lead.id ? "Calling..." : "Call"}
-                          </Button>
                         </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </ScrollArea>
-          </CardContent>
-        </Card>
-
-      </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </ScrollArea>
+            </CardContent>
+          </Card>
+        </div>
+      ) : null}
 
       {/* Right Panel - VICIdial (Full Height) */}
       <Card className="flex-1 flex flex-col overflow-hidden">

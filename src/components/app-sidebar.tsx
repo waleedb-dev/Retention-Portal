@@ -164,6 +164,14 @@ export function AppSidebar() {
                     </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
                   <SidebarMenuSubItem>
+                    <SidebarMenuSubButton asChild isActive={isActive("/agent/session")}>
+                      <Link href="/agent/session">
+                        <PhoneIcon className="h-4 w-4" />
+                        <span>Session</span>
+                      </Link>
+                    </SidebarMenuSubButton>
+                  </SidebarMenuSubItem>
+                  <SidebarMenuSubItem>
                     <SidebarMenuSubButton asChild isActive={isActive("/agent/assigned-leads")}>
                       <Link href="/agent/assigned-leads">
                         <span>Assigned Leads</span>
