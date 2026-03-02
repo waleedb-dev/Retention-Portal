@@ -1,0 +1,61 @@
+{
+  "deal": {
+    "id": 47404,
+    "monday_item_id": "11400125193",
+    "ghl_name": "BETHEMA ACQUAH",
+    "call_center": "Argon Comm BPO",
+    "updated_at": "2026-03-02T13:23:38.378297+00:00"
+  },
+  "subagent": {
+    "id": "28",
+    "name": "Argon Comm",
+    "location_id": "VirzSmc2uguibQvbydhy",
+    "match_mode": "exact_or_alias",
+    "token_source": "access_token"
+  },
+  "contact": {
+    "account_id": "28",
+    "contact_name": "BETHEMA ACQUAH",
+    "contact_id": "rlnYyt2dNUVhkHeMw2F4",
+    "updated_on": "2026-02-27 14:34:03"
+  },
+  "notes_list_count": 1,
+  "latest_note_id": "HGyKXfuE9C4kRyMOcAIy",
+  "latest_note_summary": {
+    "id": "HGyKXfuE9C4kRyMOcAIy",
+    "body": "1. Licensed agent account: Trinity\n2. Carrier: AMAM\n3. Carrier product name and level: Immediate\n4. Premium amount: $67.23\n5. Coverage amount: $25000\n6. Draft date: 03/11/2026\n7. Sent to Underwriting: Yes\n8. Commissions are paid after policy is officially approved and issued",
+    "bodyText": "1. Licensed agent account: Trinity\n2. Carrier: AMAM\n3. Carrier product name and level: Immediate\n4. Premium amount: $67.23\n5. Coverage amount: $25000\n6. Draft date: 03/11/2026\n7. Sent to Underwriting: Yes\n8. Commissions are paid after policy is officially approved and issued",
+    "userId": "uO52LEhmrtCqg9eYdiIZ",
+    "dateAdded": "2026-02-27T14:34:04.240Z",
+    "contactId": "rlnYyt2dNUVhkHeMw2F4",
+    "relations": []
+  },
+  "requested_note_id": null,
+  "requested_note_summary": null,
+  "notes_list_payload": {
+    "notes": [
+      {
+        "id": "HGyKXfuE9C4kRyMOcAIy",
+        "body": "1. Licensed agent account: Trinity\n2. Carrier: AMAM\n3. Carrier product name and level: Immediate\n4. Premium amount: $67.23\n5. Coverage amount: $25000\n6. Draft date: 03/11/2026\n7. Sent to Underwriting: Yes\n8. Commissions are paid after policy is officially approved and issued",
+        "bodyText": "1. Licensed agent account: Trinity\n2. Carrier: AMAM\n3. Carrier product name and level: Immediate\n4. Premium amount: $67.23\n5. Coverage amount: $25000\n6. Draft date: 03/11/2026\n7. Sent to Underwriting: Yes\n8. Commissions are paid after policy is officially approved and issued",
+        "userId": "uO52LEhmrtCqg9eYdiIZ",
+        "dateAdded": "2026-02-27T14:34:04.240Z",
+        "contactId": "rlnYyt2dNUVhkHeMw2F4",
+        "relations": []
+      }
+    ],
+    "traceId": "51fbb257-e54d-43b9-a783-85653a031f35"
+  },
+  "notes": [
+    {
+      "id": "HGyKXfuE9C4kRyMOcAIy",
+      "body": "1. Licensed agent account: Trinity\n2. Carrier: AMAM\n3. Carrier product name and level: Immediate\n4. Premium amount: $67.23\n5. Coverage amount: $25000\n6. Draft date: 03/11/2026\n7. Sent to Underwriting: Yes\n8. Commissions are paid after policy is officially approved and issued",
+      "bodyText": "1. Licensed agent account: Trinity\n2. Carrier: AMAM\n3. Carrier product name and level: Immediate\n4. Premium amount: $67.23\n5. Coverage amount: $25000\n6. Draft date: 03/11/2026\n7. Sent to Underwriting: Yes\n8. Commissions are paid after policy is officially approved and issued",
+      "userId": "uO52LEhmrtCqg9eYdiIZ",
+      "dateAdded": "2026-02-27T14:34:04.240Z",
+      "contactId": "rlnYyt2dNUVhkHeMw2F4",
+      "relations": []
+    }
+  ],
+  "note_detail": null
+}
