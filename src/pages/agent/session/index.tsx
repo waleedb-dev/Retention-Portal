@@ -16,7 +16,7 @@ export default function AgentSessionPage() {
         </div>
 
         {/* Right: Verification panel – populated after call from deal id */}
-        <div className="w-[380px] flex-shrink-0 flex flex-col gap-4">
+        <div className="w-[520px] flex-shrink-0 flex flex-col gap-4">
           <Card className="flex-1 flex flex-col min-h-0">
             <CardHeader className="flex-shrink-0">
               <CardTitle>Verification</CardTitle>

@@ -459,7 +459,10 @@ export default function AgentDialerDashboard({ embedded }: AgentDialerDashboardP
         <CardContent className="flex-1 min-h-0 p-0 relative">
           {/* Anchor div: the persistent iframe in _app.tsx positions itself over this element */}
           {vicidialUrl ? (
-            <div id="vicidial-iframe-anchor" className="absolute inset-0" />
+            <div
+              id="vicidial-iframe-anchor"
+              className="absolute inset-y-4 left-1/2 -translate-x-1/2 w-[720px] max-w-[90%] rounded-xl overflow-hidden"
+            />
           ) : (
             <div className="flex h-full items-center justify-center p-6 text-sm text-muted-foreground">
               Missing <code className="mx-1">NEXT_PUBLIC_VICIDIAL_AGENT_URL</code> env var.

@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "worker": "tsx worker.ts",
+    "supabase:export-csv": "tsx scripts/export_supabase_table_to_csv.ts",
     "vicidial:bootstrap": "tsx scripts/bootstrap_vicidial_agent_mapping.ts",
     "vicidial:generate-bootstrap": "tsx scripts/generate_vicidial_bootstrap_from_supabase.ts",
     "vicidial:provision": "tsx scripts/provision_vicidial_agents.ts"
